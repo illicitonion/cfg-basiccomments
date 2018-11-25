@@ -15,19 +15,19 @@
     <script type="text/javascript">
     function load() {
       fetch(new Request("http://localhost:8080"))
-	.then(response => response.json())
-	.then(json => {
-	  var text = ""
-	  json.forEach(post => text += post.name + " wrote: " + post.body + "<br />")
-	  $("#posts").html(text);
-	});
+        .then(response => response.json())
+        .then(json => {
+          var html = ""
+          json.forEach(post => { html += post.name + " wrote: " + post.body + "<br />" })
+          $("#posts").html(html);
+        });
     }
 
     load();
 
     function post() {
-      fetch(new Request("http://localhost:8080/post?name=" + encodeURI($("#name").val()) + "&body=" + encodeURI($("#body").val())))
-	.then(load)
+      var url = "http://localhost:8080/add-new-post?name=" + encodeURI($("#name").val()) + "&body=" + encodeURI($("#body").val());
+      fetch(new Request(url)).then(load)
     }
     </script>
   </body>
