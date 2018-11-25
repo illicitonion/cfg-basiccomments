@@ -1,0 +1,11 @@
+{
+  "name": "basiccomments",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Daniel Wagner-Hall <dawagner@gmail.com>",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "escape-html": "^1.0.3",
+    "sqlite3": "^4.0.4"
+  }
+}
