@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h2>Make a new post</h2>
+    Name: <input type="text" id="name" />
+    <br />
+    Body: <textarea id="body"></textarea>
+    <br />
+    <input type="button" onclick="post();" value="Post" />
+    <h2>Existing posts...</h2>
+    <div id="posts"></div>
+    <script type="text/javascript">
+    function load() {
+      fetch(new Request("http://localhost:8080"))
+	.then(response => response.json())
+	.then(json => {
+	  var text = ""
+	  json.forEach(post => text += post.name + " wrote: " + post.body + "<br />")
+	  $("#posts").html(text);
+	});
+    }
+
+    load();
+
+    function post() {
+      fetch(new Request("http://localhost:8080/post?name=" + encodeURI($("#name").val()) + "&body=" + encodeURI($("#body").val())))
+	.then(load)
+    }
+    </script>
+  </body>
+</html>

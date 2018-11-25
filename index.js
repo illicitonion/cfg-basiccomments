@@ -20,9 +20,3 @@ http.createServer((req, res) => {
     }, () => { res.write(JSON.stringify(result)); res.end() });
   }
 }).listen(8080);
-
-// Add a post with javascript from a page:
-// fetch(new Request("http://localhost:8080/post?name=" + encodeURI("someone") + "&body=" + encodeURI("Some words")))
-
-// List posts with javascript from a page:
-// fetch(new Request("http://localhost:8080")).then(response => response.json()).then(json => json.forEach(post => console.log("Got post by " + post.name + " body: " + post.body)));
